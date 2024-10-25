@@ -27,6 +27,7 @@ class CertificatePoliciesValidator(validation.Validator):
         (etsi_constants.CABF_DV_CERTIFICATE_TYPES, en_319_411_1.id_dvcp),
         (etsi_constants.CABF_OV_CERTIFICATE_TYPES, en_319_411_1.id_ovcp),
         (etsi_constants.CABF_IV_CERTIFICATE_TYPES, en_319_411_1.id_ivcp),
+        (etsi_constants.QCP_N_QSCD_CERTIFICATE_TYPES, en_319_411_1.id_ncp_plus),
     ]
 
     def __init__(self, certificate_type):

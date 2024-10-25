@@ -365,11 +365,12 @@ def create_validators(
     elif certificate_type in etsi_constants.NCP_W_CERTIFICATE_TYPES:
         subject_validators.append(en_319_412_4.NcpWCommonNameValidator())
 
-    if certificate_type in etsi_constants.CABF_CERTIFICATE_TYPES:
+    if certificate_type in etsi_constants.QCP_N_CERTIFICATE_TYPES or etsi_constants.CABF_CERTIFICATE_TYPES:
         extension_validators.append(
             en_319_411_1.CertificatePoliciesValidator(certificate_type)
         )
 
+    if certificate_type in etsi_constants.CABF_CERTIFICATE_TYPES:
         serverauth_cert_type = (
             etsi_constants.ETSI_TYPE_TO_CABF_SERVERAUTH_TYPE_MAPPINGS[certificate_type]
         )
