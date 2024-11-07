@@ -1,4 +1,6 @@
-from pkilint import validation, etsi
+from pkilint.pkioverheid import pkioverheid_constants
+
+from pkilint import validation, etsi, pkioverheid
 from pkilint.etsi import etsi_constants
 from pkilint.pkix import certificate
 from pkilint.cabf import serverauth, smime
@@ -70,5 +72,17 @@ def test_etsi():
         )
 
         context = f"etsi.{certificate_type}"
+
+        _test(validator, context)
+
+
+def test_pkioverheid():
+    for certificate_type in pkioverheid_constants.CertificateType:
+        validator = certificate.create_pkix_certificate_validator_container(
+            pkioverheid.create_decoding_validators(certificate_type),
+            pkioverheid.create_validators(certificate_type),
+        )
+
+        context = f"pkioverheid.{certificate_type}"
 
         _test(validator, context)
