@@ -7,6 +7,7 @@ import tempfile
 from pkilint.cabf.serverauth import serverauth_constants
 from pkilint.cabf.smime import smime_constants
 from pkilint.etsi import etsi_constants
+from pkilint.pkioverheid import pkioverheid_constants
 
 
 def _test_program_validations(name, args=None):
@@ -504,6 +505,13 @@ eo163oRkEIV75k1Onw==
 def test_lint_etsi_cert_validations():
     for cert_type in etsi_constants.CertificateType:
         _test_program_validations("lint_etsi_cert", ["-t", cert_type.to_option_str])
+
+
+def test_lint_pkioverheid_cert_validations():
+    for cert_type in pkioverheid_constants.CertificateType:
+        _test_program_validations(
+            "lint_pkioverheid_cert", ["-t", cert_type.to_option_str]
+        )
 
 
 def test_lint_pkix_der_only():
